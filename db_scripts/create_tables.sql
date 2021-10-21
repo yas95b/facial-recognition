@@ -6,6 +6,7 @@ CREATE TABLE users (
     joined timestamp not null
 );
 
+/* Andre used the name login instead of logins*/
 create TABLE logins (
     id serial PRIMARY KEY,
     hash varchar(100) not null,
