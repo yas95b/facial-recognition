@@ -10,3 +10,24 @@ services:
       NODE_ENV: production
     ports:
       - 3000:3000
+    depends_on:
+      - "postgresqls"
+    networks:
+      - default
+  postgresqls:
+    container_name: "postgresqlpostgis"
+    image: "postgis/postgis"
+    ports: 
+      - "5432:5432"
+    volumes:
+       - db_persdata:/var/lib/postgrespers
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: smartbrain
+    networks:
+      - default
+networks:
+  default:
+volumes:
+  db_persdata : {}

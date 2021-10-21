@@ -7,13 +7,16 @@ const knex= require('knex')
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host : 'postgresqlpostgis',
       user : 'postgres',
       password: 'test',
       database : 'smartbrain'
     }
   });
 
+db.select('*').from('users').then(data => {
+    console.log(data)
+});
 
 
 const app = express();
@@ -100,5 +103,6 @@ app.put('/image', (req, res) => {
 
 app.listen(3000, ()=>{
 console.log('app is running on port 3000');
+console.log(db.connection)
 })
 
