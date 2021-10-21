@@ -14,11 +14,6 @@ const db = knex({
     }
   });
 
-db.select('*').from('users').then(data => {
-    console.log(data)
-});
-
-
 const app = express();
 
 const database = {
@@ -103,6 +98,5 @@ app.put('/image', (req, res) => {
 
 app.listen(3000, ()=>{
 console.log('app is running on port 3000');
-console.log(db.connection)
 })
 
